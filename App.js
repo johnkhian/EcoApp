@@ -14,17 +14,16 @@ export default function LoginPage() {
 
     const handleLogin = async () => {
       try {
-        // Add your login logic here
-        // For example, you can make an API call to authenticate the user
-        const response = await fetch('https://your-api.com/login', {
+        const user = 'username'; // Replace with the username input field value
+        const pass = 'password'; // Replace with the password input field value
+    
+        const formData = new FormData();
+        formData.append('username', user);
+        formData.append('password', pass);
+    
+        const response = await fetch('http://localhost/api/login.php', {
           method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            username: 'your-username',
-            password: 'your-password'
-          })
+          body: formData
         });
     
         const data = await response.json();
